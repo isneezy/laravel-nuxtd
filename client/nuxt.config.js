@@ -22,7 +22,14 @@ export default {
                 content: "Meta description"
             }
         ],
-        link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+        link: [
+            { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+            {
+                rel: "stylesheet",
+                href:
+                    "https://fonts.googleapis.com/css?family=Nunito&display=swap"
+            }
+        ],
         loading: { color: "#007bff" }
     },
     proxy: {
