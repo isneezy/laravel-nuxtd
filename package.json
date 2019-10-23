@@ -1,0 +1,21 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "nuxt -c client/nuxt.config.js",
+        "build": "nuxt build -c client/nuxt.config.js",
+        "start": "nuxt start -c client/nuxt.config.js",
+        "lint": "eslint --fix --ext .js,.vue client/",
+        "style": "tailwind build client/assets/css/tailwind.css -c client/tailwind.config.js -o tailwind.css --no-autoprefixer"
+    },
+    "dependencies": {
+        "@nuxtjs/axios": "^5.7.1",
+        "@nuxtjs/eslint-config": "^1.1.2",
+        "dotenv": "^8.2.0",
+        "eslint": "^5",
+        "nuxt": "^2.10.2"
+    },
+    "devDependencies": {
+        "@nuxtjs/tailwindcss": "^1.1.2",
+        "babel-eslint": "^10.0.3"
+    }
+}
