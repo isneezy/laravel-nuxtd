@@ -1,13 +1,18 @@
 {
     "root": true,
+    "env": {
+        "browser": true,
+        "node": true
+    },
     "parserOptions": {
-        "parser": "babel-eslint",
-        "sourceType": "module"
+        "parser": "babel-eslint"
     },
     "extends": [
-        "@nuxtjs"
+        "@nuxtjs",
+        "plugin:nuxt/recommended",
+        "plugin:prettier/recommended",
+        "prettier",
+        "prettier/vue"
     ],
-    "rules": {
-        "vue/max-attributes-per-line": "off"
-    }
+    "plugins": ["prettier"]
 }

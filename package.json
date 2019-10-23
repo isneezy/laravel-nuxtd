@@ -4,7 +4,7 @@
         "dev": "nuxt -c client/nuxt.config.js",
         "build": "nuxt build -c client/nuxt.config.js",
         "start": "nuxt start -c client/nuxt.config.js",
-        "lint": "eslint --fix --ext .js,.vue client/",
+        "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
         "style": "tailwind build client/assets/css/tailwind.css -c client/tailwind.config.js -o tailwind.css --no-autoprefixer"
     },
     "dependencies": {
@@ -16,6 +16,10 @@
     },
     "devDependencies": {
         "@nuxtjs/tailwindcss": "^1.1.2",
-        "babel-eslint": "^10.0.3"
+        "babel-eslint": "^10.0.3",
+        "eslint-config-prettier": "^6.4.0",
+        "eslint-plugin-nuxt": "^0.4.3",
+        "eslint-plugin-prettier": "^3.1.1",
+        "prettier": "^1.18.2"
     }
 }
