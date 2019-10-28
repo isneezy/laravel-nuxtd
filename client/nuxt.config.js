@@ -22,7 +22,14 @@ export default {
                 content: "Meta description"
             }
         ],
-        link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+        link: [
+            { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+            {
+                rel: "stylesheet",
+                href:
+                    "https://fonts.googleapis.com/css?family=Nunito&display=swap"
+            }
+        ],
         loading: { color: "#007bff" }
     },
     proxy: {
@@ -31,9 +38,11 @@ export default {
     router: {
         middleware: []
     },
+    plugins: ["~/plugins/vue-composition-api", "~/plugins/vee-validate"],
     modules: [["@nuxtjs/axios", { proxy: true, prefix: "/api" }]],
     buildModules: ["@nuxtjs/tailwindcss"],
     build: {
+        transpile: ["vee-validate/dist/rules"],
         extend(config, ctx) {
             // Run ESLint on save
             if (ctx.isDev && ctx.isClient) {

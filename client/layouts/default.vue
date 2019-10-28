@@ -1,5 +1,7 @@
 <template>
-    <div class="bg-gray-200 h-full min-h-screen antialiased">
+    <div
+        class="bg-gray-200 h-full min-h-screen antialiased text-sm font-sans text-secondary-dark"
+    >
         <div class="bg-white shadow">
             <div class="container mx-auto">
                 <div class="md:px-8">
