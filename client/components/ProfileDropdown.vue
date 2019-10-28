@@ -37,8 +37,9 @@
             </div>
             <div class="py-1 border-t-2 border-gray-200">
                 <a
-                    href="#"
+                    href="javascript:void(0)"
                     class="block px-6 py-3 leading-tight hover:bg-gray-200"
+                    @click="logout"
                 >
                     Terminar sess&atilde;o
                 </a>
@@ -56,6 +57,12 @@ export default {
     props: {
         user: { type: Object, required: true },
         separation: { type: Number, default: 2 }
+    },
+    setup(props, { root }) {
+        const logout = async () => {
+            await root.$auth.logout();
+        };
+        return { logout };
     }
 };
 </script>

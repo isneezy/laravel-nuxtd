@@ -29,7 +29,7 @@ export default {
         separation: { type: Number, default: 2 }
     },
     setup() {
-        const isOpen = ref(true);
+        const isOpen = ref(false);
         return { isOpen };
     }
 };

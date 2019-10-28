@@ -53,6 +53,12 @@ class LoginController extends Controller
         return $this->responseAsJson(auth()->user());
     }
 
+    public function logout(Request $request)
+    {
+        auth()->logout();
+        return $this->responseAsJson([], "Sessao terminada com sucesso!");
+    }
+
     protected function respondWithToken($token)
     {
         return response([

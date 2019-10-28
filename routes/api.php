@@ -20,5 +20,5 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
     Route::get('/user', 'Auth\LoginController@me')->name('user');
     Route::put('/', 'Auth\LoginController@logout')->name('register');
     Route::patch('/', 'Auth\LoginController@logout')->name('refresh');
-    Route::delete('/', 'Auth\LoginController@logout')->name('logout');
+    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 });
