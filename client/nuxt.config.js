@@ -2,11 +2,6 @@ require("dotenv").config();
 
 export default {
     srcDir: __dirname,
-    env: {
-        API_ENDPOINT: `${process.env.APP_URL}/api`,
-        APP_NAME: process.env.APP_NAME,
-        APP_LOCALE: process.env.APP_LOCALE || "en"
-    },
     head: {
         title: process.env.APP_NAME,
         titleTemplate: `${process.env.APP_NAME} | Instant Docker Swarm clusters`,
@@ -32,6 +27,24 @@ export default {
         ],
         loading: { color: "#007bff" }
     },
+    auth: {
+        strategies: {
+            local: {
+                endpoints: {
+                    login: {
+                        url: "/api/auth/login",
+                        method: "post",
+                        propertyName: "access_token"
+                    },
+                    user: {
+                        url: "/api/auth/user",
+                        method: "get",
+                        propertyName: "data"
+                    }
+                }
+            }
+        }
+    },
     proxy: {
         "/api": `${process.env.APP_URL}:8000`
     },
@@ -39,7 +52,7 @@ export default {
         middleware: []
     },
     plugins: ["~/plugins/vue-composition-api", "~/plugins/vee-validate"],
-    modules: [["@nuxtjs/axios", { proxy: true, prefix: "/api" }]],
+    modules: [["@nuxtjs/axios", { proxy: true }], "@nuxtjs/auth"],
     buildModules: ["@nuxtjs/tailwindcss"],
     build: {
         transpile: ["vee-validate/dist/rules"],

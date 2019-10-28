@@ -33,18 +33,20 @@
                                 class="ml-8 text-sm font-medium text-gray-900 hover:text-gray-700"
                                 >Apps</a
                             >
-                            <nuxt-link
-                                to="/auth/login"
-                                class="ml-8 text-sm font-medium text-gray-900 hover:text-gray-700"
-                            >
-                                Login
-                            </nuxt-link>
-                            <nuxt-link
-                                to="/auth/register"
-                                class="ml-8 px-3 py-2 font-medium text-sm rounded bg-gray-300 text-gray-900 hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
-                            >
-                                Create account
-                            </nuxt-link>
+                            <template v-if="!$auth.loggedIn">
+                                <nuxt-link
+                                    to="/auth/login"
+                                    class="ml-8 text-sm font-medium text-gray-900 hover:text-gray-700"
+                                >
+                                    Login
+                                </nuxt-link>
+                                <nuxt-link
+                                    to="/auth/register"
+                                    class="ml-8 px-3 py-2 font-medium text-sm rounded bg-gray-300 text-gray-900 hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
+                                >
+                                    Create account
+                                </nuxt-link>
+                            </template>
                         </div>
                     </nav>
                 </div>
