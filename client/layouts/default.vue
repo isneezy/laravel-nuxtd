@@ -17,7 +17,7 @@
                                 </h1>
                             </nuxt-link>
                         </div>
-                        <div class="ml-10 relative flex items-baseline">
+                        <div class="ml-10 relative flex items-center">
                             <a
                                 href="#"
                                 class="text-sm font-medium text-gray-900 hover:text-gray-700"
@@ -47,6 +47,13 @@
                                     Create account
                                 </nuxt-link>
                             </template>
+                            <template v-else>
+                                <ProfileDropdown
+                                    class="ml-8"
+                                    :separation="6"
+                                    :user="$auth.user"
+                                />
+                            </template>
                         </div>
                     </nav>
                 </div>
@@ -57,3 +64,9 @@
         </div>
     </div>
 </template>
+<script>
+import ProfileDropdown from "../components/ProfileDropdown";
+export default {
+    components: { ProfileDropdown }
+};
+</script>

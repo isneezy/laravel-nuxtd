@@ -1,0 +1,36 @@
+<template>
+    <div class="relative inline-block">
+        <div @click="isOpen = true" class="cursor-pointer">
+            <slot name="toggle-content">
+                <Button>
+                    <slot name="button-content">Open this...</slot>
+                </Button>
+            </slot>
+        </div>
+        <div
+            v-if="isOpen"
+            class="fixed inset-0"
+            tabindex="-1"
+            @click="isOpen = false"
+        ></div>
+        <div v-if="isOpen" class="absolute right-0" :class="`mt-${separation}`">
+            <slot />
+        </div>
+    </div>
+</template>
+<script>
+// import Popper from "vue-popperjs";
+import { ref } from "@vue/composition-api";
+import Button from "./elements/Button";
+export default {
+    name: "Dropdown",
+    components: { Button },
+    props: {
+        separation: { type: Number, default: 2 }
+    },
+    setup() {
+        const isOpen = ref(true);
+        return { isOpen };
+    }
+};
+</script>
