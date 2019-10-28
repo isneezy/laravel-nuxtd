@@ -7,7 +7,11 @@ USER docklify
 WORKDIR /app
 
 USER root
+
 RUN apk add --no-cache supervisor inotify-tools yarn
+
+RUN docker-php-ext-install pdo_mysql
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Install application dependencies
