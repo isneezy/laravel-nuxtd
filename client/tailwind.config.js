@@ -14,11 +14,21 @@ module.exports = {
                 dark: "#3182CE"
             },
             success: {
+                light: "#C6F6D5",
                 default: "#38B2AC",
                 dark: "#319795"
             },
             info: "#667EEA",
-            danger: "#F56565",
+            danger: {
+                light: "#FEB2B2",
+                default: "#F56565",
+                dark: "#E53E3E"
+            },
+            warning: {
+                light: "#FEEBC8",
+                default: "#ED8936",
+                dark: "#DD6B20"
+            },
             secondary: {
                 light: "#E2E8F0",
                 default: "#A0AEC0",
