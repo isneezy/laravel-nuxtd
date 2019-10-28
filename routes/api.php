@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get("/", "IndexController@index");
+
 Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
-    Route::post('/', 'Auth\LoginController@login')->name('login');
+    Route::post('/login', 'Auth\LoginController@login')->name('login');
+    Route::get('/user', 'Auth\LoginController@me')->name('user');
     Route::put('/', 'Auth\LoginController@logout')->name('register');
     Route::patch('/', 'Auth\LoginController@logout')->name('refresh');
     Route::delete('/', 'Auth\LoginController@logout')->name('logout');

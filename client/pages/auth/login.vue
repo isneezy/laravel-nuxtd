@@ -5,6 +5,12 @@
         </div>
         <div class="bg-gray-100 py-4">
             <ValidationObserver ref="observer">
+                <p
+                    v-if="invalid"
+                    class="px-4 -mt-4 py-2 bg-danger-light text-secondary-dark mb-2"
+                >
+                    {{ invalid }}
+                </p>
                 <label class="flex flex-wrap">
                     <div class="w-full px-4 text-secondary">
                         Email:
@@ -49,14 +55,15 @@
                         </ValidationProvider>
                     </div>
                 </label>
-                <div class="mt-3">
+                <div class="mt-4">
                     <div class="px-4">
-                        <label class="flex items-center mb-2">
-                            <input type="checkbox" class="mr-2" />
-                            <span>Remember Me</span>
-                        </label>
+                        <!--<label class="flex items-center mb-2">-->
+                        <!--<input type="checkbox" class="mr-2" />-->
+                        <!--<span>Remember Me</span>-->
+                        <!--</label>-->
                         <div class="flex items-center">
                             <Button
+                                :disabled="pending"
                                 variant="primary"
                                 class="mr-6"
                                 @click.native="login"
@@ -84,25 +91,35 @@ import Button from "../../components/elements/Button";
 import { useValidation } from "../../composables/use-validation";
 
 export default {
+    middleware: ["auth"],
+    auth: "guest",
     components: { Input, Button },
     setup(props, { root }) {
         const observer = ref(null);
         const { resolveStatus } = useValidation();
+        const pending = ref(false);
+        const invalid = ref(false);
         const form = ref({
-            email: "A",
-            password: "",
-            nested: {
-                child: ""
-            }
+            email: "",
+            password: ""
         });
 
         const login = async () => {
+            pending.value = true;
             const isValid = await observer.value.validate();
-            if (isValid) {
-                root.$axios.$post("/auth/login", form.value);
+            try {
+                if (isValid) {
+                    await root.$auth.loginWith("local", { data: form.value });
+                }
+            } catch (e) {
+                if (e.response) {
+                    invalid.value = e.response.data.message;
+                }
+            } finally {
+                pending.value = false;
             }
         };
-        return { form, resolveStatus, observer, login };
+        return { form, resolveStatus, observer, login, pending, invalid };
     }
 };
 </script>

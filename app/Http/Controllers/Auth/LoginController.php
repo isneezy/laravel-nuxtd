@@ -35,21 +35,22 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except(['logout', 'me']);
     }
 
     public function login(Request $request)
     {
+        $this->validateLogin($request);
         $credentials = $this->credentials($request);
         if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return $this->responseAsJson([], "Email ou senha invalida.", [], 401);
         }
 
         return $this->respondWithToken($token);
     }
 
     public function me() {
-        return response()->json(auth()->user());
+        return $this->responseAsJson(auth()->user());
     }
 
     protected function respondWithToken($token)
