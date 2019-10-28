@@ -31,7 +31,7 @@ export default {
     setup(props, { emit }) {
         const currentValue = ref(null);
         const valueWhenFocus = ref(null);
-        watch(props.value, newValue => (currentValue.value = newValue));
+        watch(() => (currentValue.value = props.value));
 
         onMounted(() => {
             watch(currentValue, newValue => {

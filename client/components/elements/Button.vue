@@ -1,8 +1,3 @@
-<template>
-    <button :class="currentClasses">
-        <slot />
-    </button>
-</template>
 <script>
 import { computed } from "@vue/composition-api";
 const defaults = {
@@ -16,10 +11,15 @@ const defaults = {
 
 export default {
     props: {
+        tag: {
+            default: "button",
+            type: String
+        },
         variant: {
             default: null,
             type: String
-        }
+        },
+        to: { type: [String, Object], default: null }
     },
     setup(props) {
         const currentClasses = computed(() => {
@@ -45,6 +45,18 @@ export default {
         });
 
         return { currentClasses };
+    },
+    render(h) {
+        return h(
+            this.tag,
+            {
+                class: this.currentClasses,
+                props: {
+                    to: this.to
+                }
+            },
+            this.$slots.default
+        );
     }
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
-    <div class="mx-auto bg-white shadow rounded max-w-sm overflow-hidden">
+    <div class="mx-auto bg-white shadow rounded max-w-xl overflow-hidden">
         <div class="p-4">
-            <h1 class="text-lg">Login</h1>
+            <h1 class="text-lg">Entrar</h1>
         </div>
         <div class="bg-gray-100 py-4">
             <ValidationObserver ref="observer">
@@ -114,6 +114,9 @@ export default {
             } catch (e) {
                 if (e.response) {
                     invalid.value = e.response.data.message;
+                    if (e.response) {
+                        observer.value.setErrors(e.response.data.errors);
+                    }
                 }
             } finally {
                 pending.value = false;
