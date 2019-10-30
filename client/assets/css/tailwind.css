@@ -3,3 +3,15 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.scale-90 {
+    transform: scale(.5);
+}
+
+:root {
+    --color-primary: #4299E1;
+}
+
+svg {
+    fill: currentColor;
+}

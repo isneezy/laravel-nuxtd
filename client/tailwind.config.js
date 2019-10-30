@@ -48,6 +48,14 @@ module.exports = {
         },
         fontFamily: {
             sans: ["Nunito", "Arial", "sans-serif"]
+        },
+        extend: {
+            boxShadow: {
+                card: "0 2px 3px rgba(0,0,0,.16)"
+            },
+            backgroundColor: {
+                smoke: "rgba(0,0,0,.5)"
+            }
         }
     },
     variants: {},

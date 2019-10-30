@@ -8,6 +8,7 @@
         "style": "tailwind build client/assets/css/tailwind.css -c client/tailwind.config.js -o tailwind.css --no-autoprefixer"
     },
     "dependencies": {
+        "@nuxtjs/auth": "^4.8.4",
         "@nuxtjs/axios": "^5.7.1",
         "@nuxtjs/eslint-config": "^1.1.2",
         "@vue/composition-api": "^0.3.2",

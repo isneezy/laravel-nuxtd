@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -34,6 +37,36 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:api')->except(['logout', 'me']);
+    }
+
+    public function login(Request $request)
+    {
+        $this->validateLogin($request);
+        $credentials = $this->credentials($request);
+        if (! $token = auth()->attempt($credentials)) {
+            return $this->responseAsJson([], "Email ou senha invalida.", [], 401);
+        }
+
+        return $this->respondWithToken($token);
+    }
+
+    public function me() {
+        return $this->responseAsJson(new UserResource(auth()->user()));
+    }
+
+    public function logout(Request $request)
+    {
+        auth()->logout();
+        return $this->responseAsJson([], "Sessao terminada com sucesso!");
+    }
+
+    protected function respondWithToken($token)
+    {
+        return response([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60
+        ]);
     }
 }

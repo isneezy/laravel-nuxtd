@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,11 +13,22 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get("/", "IndexController@index");
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
+    Route::post('/login', 'Auth\LoginController@login')->name('login');
+    Route::get('/user', 'Auth\LoginController@me')->name('user');
+    Route::post('/register', 'Auth\RegisterController@register')->name('register');
+    Route::patch('/', 'Auth\LoginController@logout')->name('refresh');
+    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 });
 
-Route::get('/', function () {
-    return ['name' => env('APP_NAME')];
+Route::apiResource('users', 'UserController')
+    ->except(['store', 'index'])
+    ->middleware('auth:api');
+
+Route::group(['prefix' => 'email', 'as' => 'verification.'], function () {
+    Route::get('verify/{user}/{hash}', 'Auth\VerificationController@verify')->name('verify');
 });
+
+// \Illuminate\Support\Facades\Auth::routes(['verify' => true]);

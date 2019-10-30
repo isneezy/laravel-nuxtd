@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return '';
+
+use Illuminate\Support\Facades\Route;
+
+Route::group(['prefix' => 'admin'], function() {
+    Timoneiro::routes();
 });
