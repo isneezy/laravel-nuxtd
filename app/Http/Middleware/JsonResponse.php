@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class JsonResponse
 {
@@ -17,6 +18,7 @@ class JsonResponse
     {
         if($request->is("api*")) {
             $request->headers->set('Accept', 'application/json');
+            auth()->setDefaultDriver('api');
         }
         return $next($request);
     }

@@ -1,15 +1,11 @@
 <template>
     <Dropdown :separation="separation">
-        <Avatar
-            slot="toggle-content"
-            src="https://tailwindcss.com/img/jonathan.jpg"
-            alt="Avatar of Jonathan Reinink"
-        />
+        <Avatar slot="toggle-content" :src="user.avatar" />
         <div class="w-64 bg-white rounded-lg shadow-lg">
             <div class="flex items-center px-6 py-4">
                 <Avatar
                     slot="toggle-content"
-                    src="https://tailwindcss.com/img/jonathan.jpg"
+                    :src="user.avatar"
                     alt="Avatar of Jonathan Reinink"
                 />
                 <div class="ml-4">
@@ -22,12 +18,12 @@
                 </div>
             </div>
             <div class="py-1 border-t-2 border-gray-200">
-                <a
-                    href="#"
+                <nuxt-link
+                    to="/my/profile"
                     class="block px-6 py-3 leading-tight hover:bg-gray-200"
                 >
                     Meu perfil
-                </a>
+                </nuxt-link>
                 <a
                     href="#"
                     class="block px-6 py-3 leading-tight hover:bg-gray-200"

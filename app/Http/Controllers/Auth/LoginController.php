@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -50,7 +52,7 @@ class LoginController extends Controller
     }
 
     public function me() {
-        return $this->responseAsJson(auth()->user());
+        return $this->responseAsJson(new UserResource(auth()->user()));
     }
 
     public function logout(Request $request)

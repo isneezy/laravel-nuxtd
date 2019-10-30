@@ -1,6 +1,6 @@
 <template>
     <div class="relative inline-block">
-        <div @click="isOpen = true" class="cursor-pointer">
+        <div class="cursor-pointer" @click="isOpen = true">
             <slot name="toggle-content">
                 <Button>
                     <slot name="button-content">Open this...</slot>

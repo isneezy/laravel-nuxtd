@@ -2,6 +2,7 @@ require("dotenv").config();
 
 export default {
     srcDir: __dirname,
+    loading: { color: "var(--color-primary)" },
     head: {
         title: process.env.APP_NAME,
         titleTemplate: `${process.env.APP_NAME} | Instant Docker Swarm clusters`,
@@ -25,7 +26,6 @@ export default {
                     "https://fonts.googleapis.com/css?family=Nunito&display=swap"
             }
         ],
-        loading: { color: "#007bff" }
     },
     auth: {
         strategies: {
@@ -46,12 +46,23 @@ export default {
         }
     },
     proxy: {
-        "/api": `${process.env.APP_URL}:8000`
+        "/api": {
+            target: `${process.env.APP_URL}:8000`,
+            xfwd: true
+        },
+        "/admin": {
+            target: `${process.env.APP_URL}:8000`,
+            xfwd: true
+        }
     },
     router: {
         middleware: []
     },
-    plugins: ["~/plugins/vue-composition-api", "~/plugins/vee-validate"],
+    plugins: [
+        "~/plugins/vue-composition-api",
+        "~/plugins/vee-validate",
+        "~/plugins/repository"
+    ],
     modules: [["@nuxtjs/axios", { proxy: true }], "@nuxtjs/auth"],
     buildModules: ["@nuxtjs/tailwindcss"],
     build: {

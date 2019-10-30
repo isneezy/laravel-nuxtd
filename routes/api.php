@@ -22,3 +22,8 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
     Route::patch('/', 'Auth\LoginController@logout')->name('refresh');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 });
+
+Route::apiResource('users', 'UserController')->except(['store', 'index']);
+Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+    Route::post('{user}/change-password', 'UserController@changePassword')->name('change-password');
+});
