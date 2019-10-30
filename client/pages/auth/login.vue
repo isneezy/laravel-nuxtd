@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-auto max-w-xl">
+    <div class="mx-auto max-w-xl" @keyup.enter="login">
         <Card class="shadow" title="Entrar">
             <ValidationObserver ref="observer">
                 <p

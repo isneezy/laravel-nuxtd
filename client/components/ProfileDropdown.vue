@@ -8,7 +8,7 @@
                     :src="user.avatar"
                     alt="Avatar of Jonathan Reinink"
                 />
-                <div class="ml-4">
+                <div class="ml-4 truncate">
                     <p class="font-semibold text-gray-900 leading-none">
                         {{ user.name }}
                     </p>
@@ -24,12 +24,6 @@
                 >
                     Meu perfil
                 </nuxt-link>
-                <a
-                    href="#"
-                    class="block px-6 py-3 leading-tight hover:bg-gray-200"
-                >
-                    Defini&ccedil;&otilde;es & Privacidade
-                </a>
             </div>
             <div class="py-1 border-t-2 border-gray-200">
                 <a
