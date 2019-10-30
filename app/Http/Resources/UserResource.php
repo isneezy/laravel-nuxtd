@@ -21,6 +21,7 @@ class UserResource extends JsonResource
             'email' => $this->resource->email,
             'role_id' => $this->resource->role_id,
             'role' => $this->resource->role,
+            'has_verified_email' => $this->resource->hasVerifiedEmail(),
             'updated_at' => $this->resource->updated_at,
             'created_at' => $this->resource->created_at
         ];

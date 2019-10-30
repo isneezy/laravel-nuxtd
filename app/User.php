@@ -2,14 +2,13 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends \Isneezy\Timoneiro\Models\User implements JWTSubject
 {
-    use Notifiable;
+    use Notifiable, MustVerifyEmail;
 
     /**
      * The attributes that are mass assignable.

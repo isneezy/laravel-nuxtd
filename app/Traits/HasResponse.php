@@ -97,4 +97,9 @@ trait HasResponse
             unset($this->jsonWith['debug']);
         }
     }
+
+    public function forceHtmlResponse() {
+        request()->headers->set('Accept', 'text/html');
+        return $this;
+    }
 }

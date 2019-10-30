@@ -23,7 +23,12 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 });
 
-Route::apiResource('users', 'UserController')->except(['store', 'index']);
-Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
-    Route::post('{user}/change-password', 'UserController@changePassword')->name('change-password');
+Route::apiResource('users', 'UserController')
+    ->except(['store', 'index'])
+    ->middleware('auth:api');
+
+Route::group(['prefix' => 'email', 'as' => 'verification.'], function () {
+    Route::get('verify/{user}/{hash}', 'Auth\VerificationController@verify')->name('verify');
 });
+
+// \Illuminate\Support\Facades\Auth::routes(['verify' => true]);

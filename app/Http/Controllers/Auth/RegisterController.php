@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -62,6 +63,11 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
         $email = $request->get("email");
         event(new Registered($user = $this->create($request->all())));
+
+        if (method_exists($user, "sendEmailVerificationNotification")) {
+            $user->sendEmailVerificationNotification();
+        }
+
         return $this->responseAsJson([], "Um email foi enviado para $email. Verifique um e-mail nosso e clique no link incluído para confirmar seu e-mail.");
     }
 

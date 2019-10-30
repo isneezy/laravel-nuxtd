@@ -61,12 +61,14 @@
         </div>
         <div class="container mx-auto mt-8 md:px-8">
             <nuxt />
+            <EmailVerficationNotice />
         </div>
     </div>
 </template>
 <script>
 import ProfileDropdown from "../components/ProfileDropdown";
+import EmailVerficationNotice from "../components/EmailVerficationNotice";
 export default {
-    components: { ProfileDropdown }
+    components: { EmailVerficationNotice, ProfileDropdown }
 };
 </script>

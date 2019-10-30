@@ -5,14 +5,16 @@
         </div>
         <h3 class="font-semibold text-xl text-center mt-4">Successo!</h3>
         <p class="mt-4 text-center">{{ message }}</p>
-        <Button
-            tag="nuxt-link"
-            to="/"
-            variant="primary"
-            class="w-full block mt-3 text-center"
-        >
-            Voltar a Pagina Inicial
-        </Button>
+        <slot name="button">
+            <Button
+                tag="nuxt-link"
+                to="/"
+                variant="primary"
+                class="w-full block mt-3 text-center"
+            >
+                Voltar a Pagina Inicial
+            </Button>
+        </slot>
     </div>
 </template>
 <script>
