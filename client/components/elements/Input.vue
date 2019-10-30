@@ -1,16 +1,18 @@
 <template>
     <input
-        v-model="currentValue"
+        :autocomplete="autocomplete"
         :name="name"
         :placeholder="placeholder"
         :type="type"
         :class="currentClasses"
+        :value="value"
+        @input="onInput"
         @blur="onBlur"
         @focus="onFocus"
     />
 </template>
 <script>
-import { computed, watch, ref, onMounted } from "@vue/composition-api";
+import { computed, watch, ref } from "@vue/composition-api";
 import { useHandleClasses, useHandleStatus } from "../compositions";
 import htmlInputAttributes from "../mixins/htmlInputAttributes";
 import commonAttributes from "../mixins/commonAttributes";
@@ -31,12 +33,8 @@ export default {
     setup(props, { emit }) {
         const currentValue = ref(null);
         const valueWhenFocus = ref(null);
-        watch(() => (currentValue.value = props.value));
-
-        onMounted(() => {
-            watch(currentValue, newValue => {
-                emit("input", newValue);
-            });
+        watch(() => {
+            currentValue.value = props.value;
         });
 
         const onBlur = e => {
@@ -46,10 +44,11 @@ export default {
             }
         };
 
+        const onInput = e => emit("input", e.target.value);
+
         const onFocus = e => {
-            console.log(currentValue.value);
             emit("focus", e);
-            valueWhenFocus.value = currentValue;
+            valueWhenFocus.value = currentValue.value;
         };
 
         const status = computed(() => props.status);
@@ -68,7 +67,9 @@ export default {
             isWarning,
             isSuccess,
             isError,
-            currentValue
+            currentValue,
+            valueWhenFocus,
+            onInput
         };
     }
 };

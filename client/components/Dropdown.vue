@@ -7,14 +7,19 @@
                 </Button>
             </slot>
         </div>
-        <div
-            v-if="isOpen"
-            class="fixed inset-0"
-            tabindex="-1"
-            @click="isOpen = false"
-        ></div>
-        <div v-if="isOpen" class="absolute right-0" :class="`mt-${separation}`">
-            <slot />
+        <div v-if="isOpen" class="absolute z-50 right-0">
+            <div
+                class="fixed inset-0"
+                tabindex="-1"
+                @click="isOpen = false"
+            ></div>
+            <div
+                v-if="isOpen"
+                class="absolute right-0"
+                :class="`mt-${separation}`"
+            >
+                <slot />
+            </div>
         </div>
     </div>
 </template>

@@ -1,7 +1,11 @@
 <template>
-    <label class="flex flex-wrap mb-3">
-        <div class="w-full px-4 text-secondary">{{ label }}:</div>
-        <div class="w-full px-4">
+    <label class="flex flex-wrap -mx-2" :class="defaultClasses">
+        <span class="w-3/12 text-secondary text-right px-2 pt-1">
+            <template v-if="label">
+                {{ label }}:
+            </template>
+        </span>
+        <div class="w-8/12 px-2">
             <ValidationProvider
                 v-slot="props"
                 :name="name"
@@ -24,7 +28,8 @@ export default {
     props: {
         rules: { type: [String, Object], default: null },
         name: { default: null, type: String },
-        label: { default: null, type: String }
+        label: { default: null, type: String },
+        defaultClasses: { type: String, default: "mb-5" }
     },
     setup() {
         const { resolveStatus } = useValidation();
