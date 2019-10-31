@@ -1,8 +1,8 @@
 <template>
     <AppPage>
         <h4 class="font-semibold text-xl">Meu Perfil</h4>
-        <div class="flex -mx-4 mt-4">
-            <div class="w-3/12 px-4">
+        <div class="flex flex-wrap -mx-4 mt-4">
+            <div class="w-full lg:w-3/12 px-4">
                 <ul>
                     <li
                         v-for="(link, index) in links"
@@ -21,7 +21,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="w-9/12 px-4">
+            <div class="w-full lg:w-9/12 px-4">
                 <NuxtChild />
             </div>
         </div>

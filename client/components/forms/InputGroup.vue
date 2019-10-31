@@ -1,11 +1,13 @@
 <template>
     <label class="flex flex-wrap -mx-2" :class="defaultClasses">
-        <span class="w-3/12 text-secondary text-right px-2 pt-1">
+        <span
+            class="w-full md:w-3/12 text-secondary md:text-right px-2 pt-1 pb-1 md:pb-0"
+        >
             <template v-if="label">
                 {{ label }}:
             </template>
         </span>
-        <div class="w-8/12 px-2">
+        <div class="w-full md:w-8/12 px-2">
             <ValidationProvider
                 v-slot="props"
                 :name="name"
