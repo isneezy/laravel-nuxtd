@@ -11,34 +11,24 @@
                         </nuxt-link>
                     </div>
                     <div class="ml-10 relative flex items-center">
-                        <a
-                            href="#"
-                            class="text-sm font-medium text-gray-900 hover:text-gray-700"
-                            >Servers</a
-                        >
-                        <a
-                            href="#"
-                            class="ml-8 text-sm font-medium text-gray-900 hover:text-gray-700"
-                            >Clusters</a
-                        >
-                        <a
-                            href="#"
-                            class="ml-8 text-sm font-medium text-gray-900 hover:text-gray-700"
-                            >Apps</a
-                        >
+                        <HeaderMenuItem>Servers</HeaderMenuItem>
+                        <HeaderMenuItem class="ml-8">Clusters</HeaderMenuItem>
+                        <HeaderMenuItem class="ml-8">Apps</HeaderMenuItem>
                         <template v-if="!$auth.loggedIn">
-                            <nuxt-link
+                            <HeaderMenuItem
+                                tag="NuxtLink"
                                 to="/auth/login"
-                                class="ml-8 text-sm font-medium text-gray-900 hover:text-gray-700"
+                                class="ml-8"
                             >
                                 Login
-                            </nuxt-link>
-                            <nuxt-link
-                                to="/auth/register"
-                                class="ml-8 px-3 py-2 font-medium text-sm rounded bg-gray-300 text-gray-900 hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
+                            </HeaderMenuItem>
+                            <HeaderMenuItem
+                                tag="NuxtLink"
+                                to="/auth/login"
+                                class="ml-8 px-3 py-2 rounded bg-gray-300 hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
                             >
                                 Create account
-                            </nuxt-link>
+                            </HeaderMenuItem>
                         </template>
                         <template v-else>
                             <ProfileDropdown
@@ -56,9 +46,10 @@
 <script>
 import ProfileDropdown from "../components/ProfileDropdown";
 import AppLogo from "./AppLogo";
+import HeaderMenuItem from "./HeaderMenuItem";
 
 export default {
     name: "TheHeader",
-    components: { AppLogo, ProfileDropdown }
+    components: { HeaderMenuItem, AppLogo, ProfileDropdown }
 };
 </script>
