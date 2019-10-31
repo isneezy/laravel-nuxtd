@@ -13,9 +13,12 @@
 </template>
 <script>
 import { computed, watch, ref } from "@vue/composition-api";
-import { useHandleClasses, useHandleStatus } from "../compositions";
-import htmlInputAttributes from "../mixins/htmlInputAttributes";
-import commonAttributes from "../mixins/commonAttributes";
+import {
+    useHandleClasses,
+    useHandleStatus
+} from "~/components/forms/compositions";
+import htmlInputAttributes from "~/components/forms/mixins/htmlInputAttributes";
+import commonAttributes from "~/components/forms/mixins/commonAttributes";
 
 const defaults = {
     baseClass:

@@ -59,11 +59,11 @@
 
 <script>
 import { ref } from "@vue/composition-api";
-import Input from "../../components/elements/Input";
-import Button from "../../components/elements/Button";
-import { useValidation } from "../../composables/use-validation";
-import Card from "../../components/Card";
-import InputGroup from "../../components/InputGroup";
+import Input from "~/components/forms/elements/Input";
+import Button from "~/components/forms/elements/Button";
+import { useValidation } from "~/composables/use-validation";
+import Card from "~/components/Card";
+import InputGroup from "~/components/forms/InputGroup";
 
 export default {
     middleware: ["auth"],

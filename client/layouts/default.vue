@@ -10,8 +10,8 @@
     </div>
 </template>
 <script>
-import EmailVerificationNotice from "../components/EmailVerficationNotice";
-import TheHeader from "../components/TheHeader";
+import TheHeader from "~/components/TheHeader";
+import EmailVerificationNotice from "~/components/auth/EmailVerficationNotice";
 export default {
     components: { TheHeader, EmailVerificationNotice }
 };

@@ -52,10 +52,10 @@
 </template>
 
 <script>
-import InputGroup from "../InputGroup";
-import Input from "../elements/Input";
-import Button from "../elements/Button";
-import Card from "../Card";
+import InputGroup from "~/components/forms/InputGroup";
+import Input from "~/components/forms/elements/Input";
+import Button from "~/components/forms/elements/Button";
+import Card from "~/components/Card";
 export default {
     name: "PasswordUpdateForm",
     components: { Card, Button, Input, InputGroup },

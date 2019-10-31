@@ -18,7 +18,7 @@
     </div>
 </template>
 <script>
-import Button from "./elements/Button";
+import Button from "~/components/forms/elements/Button";
 export default {
     name: "SuccessBox",
     components: { Button },

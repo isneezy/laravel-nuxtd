@@ -12,7 +12,7 @@
 </template>
 <script>
 import { computed } from "@vue/composition-api";
-import Spinner from "../Spinner";
+import Spinner from "~/components/Spinner";
 const defaults = {
     baseClass: "cursor-pointer px-5 py-2 rounded",
     defaultClass: "border-secondary hover:bg-secondary-light",

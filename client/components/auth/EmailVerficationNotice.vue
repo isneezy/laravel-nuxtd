@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import SuccessBox from "./SuccessBox";
-import Button from "./elements/Button";
+import SuccessBox from "~/components/SuccessBox";
+import Button from "~/components/forms/elements/Button";
 export default {
     name: "EmailVerficationNotice",
     components: { Button, SuccessBox },
