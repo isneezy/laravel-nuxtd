@@ -29,11 +29,11 @@
     </Card>
 </template>
 <script>
-import InputGroup from "../InputGroup";
-import Input from "../elements/Input";
-import Button from "../elements/Button";
-import Avatar from "../Avatar";
-import Card from "../Card";
+import InputGroup from "~/components/forms/InputGroup";
+import Input from "~/components/forms/elements/Input";
+import Button from "~/components/forms/elements/Button";
+import Avatar from "~/components/Avatar";
+import Card from "~/components/Card";
 export default {
     name: "ProfileInfoForm",
     components: { Card, Avatar, Button, Input, InputGroup },

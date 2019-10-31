@@ -26,7 +26,7 @@
 <script>
 // import Popper from "vue-popperjs";
 import { ref } from "@vue/composition-api";
-import Button from "./elements/Button";
+import Button from "~/components/forms/elements/Button";
 export default {
     name: "Dropdown",
     components: { Button },

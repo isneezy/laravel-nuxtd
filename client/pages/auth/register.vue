@@ -60,11 +60,11 @@
 </template>
 <script>
 import { ref } from "@vue/composition-api";
-import InputGroup from "../../components/InputGroup";
-import Input from "../../components/elements/Input";
-import Button from "../../components/elements/Button";
-import Card from "../../components/Card";
-import SuccessBox from "../../components/SuccessBox";
+import InputGroup from "~/components/forms/InputGroup";
+import Input from "~/components/forms/elements/Input";
+import Button from "~/components/forms/elements/Button";
+import Card from "~/components/Card";
+import SuccessBox from "~/components/SuccessBox";
 export default {
     components: { SuccessBox, Card, Button, Input, InputGroup },
     setup(props, { root }) {

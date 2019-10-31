@@ -21,7 +21,7 @@
     </label>
 </template>
 <script>
-import { useValidation } from "../composables/use-validation";
+import { useValidation } from "~/composables/use-validation";
 
 export default {
     name: "InputGroup",

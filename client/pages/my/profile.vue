@@ -5,8 +5,8 @@
     </div>
 </template>
 <script>
-import ProfileInfoForm from "../../components/forms/ProfileInfoForm";
-import PasswordUpdateForm from "../../components/forms/PasswordUpdateForm";
+import ProfileInfoForm from "~/components/auth/ProfileInfoForm";
+import PasswordUpdateForm from "~/components/auth/PasswordUpdateForm";
 export default {
     components: { PasswordUpdateForm, ProfileInfoForm },
     async asyncData({ app, $auth }) {
