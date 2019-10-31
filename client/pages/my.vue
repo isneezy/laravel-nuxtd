@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <AppPage>
         <h4 class="font-semibold text-xl">Meu Perfil</h4>
         <div class="flex -mx-4 mt-4">
             <div class="w-3/12 px-4">
@@ -25,10 +25,12 @@
                 <NuxtChild />
             </div>
         </div>
-    </div>
+    </AppPage>
 </template>
 <script>
+import AppPage from "../components/AppPage";
 export default {
+    components: { AppPage },
     data: () => ({
         links: [
             {
