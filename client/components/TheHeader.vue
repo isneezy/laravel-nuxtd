@@ -11,23 +11,25 @@
                         </nuxt-link>
                     </div>
                     <div class="ml-10 relative flex items-center">
-                        <HeaderMenuItem>Servers</HeaderMenuItem>
-                        <HeaderMenuItem class="ml-8">Clusters</HeaderMenuItem>
-                        <HeaderMenuItem class="ml-8">Apps</HeaderMenuItem>
+                        <HeaderMenuItem>Serviços</HeaderMenuItem>
+                        <HeaderMenuItem class="ml-8">Sobre nós</HeaderMenuItem>
+                        <HeaderMenuItem class="ml-8">
+                            Contacte-nos
+                        </HeaderMenuItem>
                         <template v-if="!$auth.loggedIn">
                             <HeaderMenuItem
                                 tag="NuxtLink"
                                 to="/auth/login"
                                 class="ml-8"
                             >
-                                Login
+                                Entrar
                             </HeaderMenuItem>
                             <HeaderMenuItem
                                 tag="NuxtLink"
                                 to="/auth/login"
                                 class="ml-8 px-3 py-2 rounded bg-gray-300 hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
                             >
-                                Create account
+                                Crirar conta
                             </HeaderMenuItem>
                         </template>
                         <template v-else>

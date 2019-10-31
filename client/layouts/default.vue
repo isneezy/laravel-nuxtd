@@ -5,15 +5,14 @@
         <TheHeader class="bg-white shadow" />
         <div class="container mx-auto mt-8 md:px-8">
             <nuxt />
-            <EmailVerficationNotice />
+            <EmailVerificationNotice />
         </div>
     </div>
 </template>
 <script>
-import EmailVerficationNotice from "../components/EmailVerficationNotice";
-import TheHeader from "~/components/TheHeader";
-
+import EmailVerificationNotice from "../components/EmailVerficationNotice";
+import TheHeader from "../components/TheHeader";
 export default {
-    components: { TheHeader, EmailVerficationNotice }
+    components: { TheHeader, EmailVerificationNotice }
 };
 </script>
