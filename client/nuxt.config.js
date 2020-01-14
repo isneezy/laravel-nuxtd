@@ -47,11 +47,11 @@ export default {
     },
     proxy: {
         "/api": {
-            target: `${process.env.APP_URL}:8000`,
+            target: `127.0.0.1:8080`,
             xfwd: true
         },
         "/admin": {
-            target: `${process.env.APP_URL}:8000`,
+            target: `127.0.0.1:8080`,
             xfwd: true
         }
     },

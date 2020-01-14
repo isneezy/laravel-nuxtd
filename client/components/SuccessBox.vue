@@ -1,6 +1,7 @@
 <template>
     <div class="px-6 py-6">
         <div class="flex justify-center">
+            <!--eslint-disable-next-line vue/no-v-html-->
             <i class="h-8 w-8 text-success" v-html="icons.success"></i>
         </div>
         <h3 class="font-semibold text-xl text-center mt-4">Successo!</h3>

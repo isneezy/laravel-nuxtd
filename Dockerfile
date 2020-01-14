@@ -1,4 +1,4 @@
-FROM php:7.2-alpine
+FROM php:7.2-fpm-alpine
 
 RUN addgroup -g 1000 -S docklify && \
     adduser -S -u 1000 docklify -G docklify
@@ -8,7 +8,7 @@ WORKDIR /app
 
 USER root
 
-RUN apk add --no-cache supervisor inotify-tools yarn
+RUN apk add --no-cache supervisor inotify-tools yarn nginx
 
 RUN docker-php-ext-install pdo_mysql
 
@@ -28,5 +28,18 @@ RUN yarn install
 
 CMD ["supervisord", "--nodaemon", "--configuration", "/app/supervisord.conf"]
 
+
 COPY --chown=docklify:docklify . .
-RUN composer dump-autoload
+#RUN composer dump-autoload
+#RUN yarn build
+#
+COPY nginx.conf /etc/nginx/nginx.conf
+
+USER root
+# Make sure files/folders needed by the processes are accessable when they run under the nobody user
+RUN chown -R docklify.docklify /run && \
+  chown -R docklify.docklify /var/lib/nginx && \
+  chown -R docklify.docklify /var/tmp/nginx && \
+  chown -R docklify.docklify /var/log/nginx
+
+USER docklify

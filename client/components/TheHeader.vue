@@ -12,8 +12,8 @@
                     </div>
                     <div class="flex flex-shrink-0 pr-4 md:hidden">
                         <ProfileDropdown
-                            class="mr-1"
                             v-if="$auth.loggedIn"
+                            class="mr-1"
                             :user="$auth.user"
                         />
                         <button
