@@ -17,7 +17,7 @@ Route::get("/", "IndexController@index");
 
 Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
     Route::post('/login', 'Auth\LoginController@login')->name('login');
-    Route::get('/user', 'Auth\LoginController@me')->name('user');
+    Route::get('/user', 'Auth\LoginController@me')->middleware("auth:api")->name('user');
     Route::post('/register', 'Auth\RegisterController@register')->name('register');
     Route::patch('/', 'Auth\LoginController@logout')->name('refresh');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
